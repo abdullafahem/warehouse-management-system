@@ -29,12 +29,8 @@
                     <dl class="row">
                         <dt class="col-sm-4">Status</dt>
                         <dd class="col-sm-8">
-                            <span class="badge p-2 text-white bg-{{ 
-                                $order->status === 'APPROVED' ? 'success' : 
-                                ($order->status === 'DECLINED' ? 'danger' : 
-                                ($order->status === 'AWAITING_APPROVAL' ? 'warning' : 'secondary')) 
-                            }}">
-                                {{ $order->status }}
+                            <span class="badge p-2 text-white bg-{{ $order->status->getColor() }}">
+                                {{ $order->status->getLabel() }}
                             </span>
                         </dd>
 

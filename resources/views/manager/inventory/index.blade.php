@@ -43,7 +43,7 @@
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->item_name }}</td>
                             <td>{{ $item->quantity }}</td>
-                            <td>${{ number_format($item->unit_price, 2) }}</td>
+                            <td>${{ $item->unit_price }}</td>
                             <td>{{ $item->package_volume }} cm³</td>
                             <td>
                                 <a href="{{ route('warehouse.inventory.edit', $item) }}" 
