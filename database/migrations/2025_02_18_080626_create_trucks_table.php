@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('chassis_number')->unique();
             $table->string('license_plate')->unique();
-            $table->decimal('container_volume', 10, 2);
+            $table->bigInteger('container_volume');
             $table->boolean('is_active')->default(true);
             $table->timestamps();
         });

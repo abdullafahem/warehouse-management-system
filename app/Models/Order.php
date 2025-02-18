@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Statuses;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
@@ -13,6 +14,7 @@ class Order extends Model
     protected $casts = [
         'submitted_date' => 'date',
         'deadline_date' => 'date',
+        'status' => Statuses::class,
     ];
 
     public function client()
@@ -32,17 +34,17 @@ class Order extends Model
 
     public function canUpdate()
     {
-        return in_array($this->status, ['CREATED', 'DECLINED']);
+        return in_array($this->status, [Statuses::CREATED, Statuses::DECLINED]);
     }
 
     public function canCancel()
     {
-        return !in_array($this->status, ['FULFILLED', 'UNDER_DELIVERY', 'CANCELED']);
+        return !in_array($this->status, [Statuses::FULFILLED, Statuses::UNDER_DELIVERY, Statuses::CANCELED]);
     }
 
     public function canSubmit()
     {
-        return in_array($this->status, ['CREATED', 'DECLINED']);
+        return in_array($this->status, [Statuses::CREATED, Statuses::DECLINED]);
     }
 
     protected static function boot()

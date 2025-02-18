@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\InventoryItem;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,25 +17,28 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@warehouse.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'SYSTEM_ADMIN'
-        ]);
+        // User::create([
+        //     'name' => 'Admin User',
+        //     'email' => 'admin@warehouse.com',
+        //     'password' => Hash::make('12345678'),
+        //     'role' => 'SYSTEM_ADMIN'
+        // ]);
 
-        User::create([
-            'name' => 'Warehouse Manager',
-            'email' => 'manager@warehouse.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'WAREHOUSE_MANAGER'
-        ]);
+        // User::create([
+        //     'name' => 'Warehouse Manager',
+        //     'email' => 'manager@warehouse.com',
+        //     'password' => Hash::make('12345678'),
+        //     'role' => 'WAREHOUSE_MANAGER'
+        // ]);
 
-        User::create([
-            'name' => 'Client User',
-            'email' => 'client@warehouse.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'CLIENT'
-        ]);
+        // User::create([
+        //     'name' => 'Client User',
+        //     'email' => 'client@warehouse.com',
+        //     'password' => Hash::make('12345678'),
+        //     'role' => 'CLIENT'
+        // ]);
+
+        // Create 50 InventoryItem entries
+        InventoryItem::factory(50)->create();
     }
 }

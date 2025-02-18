@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 
 class Truck extends Model
@@ -12,7 +13,6 @@ class Truck extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
-        'container_volume' => 'decimal:2'
     ];
 
     public function deliveries()
@@ -25,5 +25,13 @@ class Truck extends Model
         return !$this->deliveries()
             ->whereDate('delivery_date', $date)
             ->exists();
+    }
+
+    protected function containerVolume(): Attribute
+    {
+        return Attribute::make(
+            get: fn(int $value) => $value / 1000000,
+            set: fn(float $value) => $value * 1000000,
+        );
     }
 }

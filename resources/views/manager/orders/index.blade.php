@@ -12,7 +12,7 @@
                         <option value="">All Statuses</option>
                         @foreach($statuses as $status)
                             <option value="{{ $status->name }}" {{ request('status') == $status->name ? 'selected' : '' }}>
-                                {{ $status->value }}
+                                {{ $status->getLabel() }}
                             </option>
                         @endforeach
                     </select>
@@ -38,15 +38,8 @@
                             <td>{{ $order->order_number }}</td>
                             <td>{{ $order->client->name }}</td>
                             <td>
-                                <span class="badge text-white p-2 bg-{{ 
-                                    $order->status === 'APPROVED' ? 'success' : 
-                                    ($order->status === 'DECLINED' ? 'danger' : 
-                                    ($order->status === 'AWAITING_APPROVAL' ? 'warning' : 
-                                    ($order->status === 'UNDER_DELIVERY' ? 'info' : 
-                                    ($order->status === 'FULFILLED' ? 'primary' : 
-                                    ($order->status === 'CANCELED' ? 'dark' : 'secondary'))))) 
-                                }}">
-                                    {{ $order->status }}
+                                <span class="badge text-white p-2 bg-{{ $order->status->getColor() }}">
+                                    {{ $order->status->getLabel() }}
                                 </span>
                             </td>
                             <td>{{ $order->submitted_date?->format('Y-m-d') ?? 'Not submitted' }}</td>

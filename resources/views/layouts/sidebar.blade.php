@@ -6,61 +6,61 @@
         <div class="sidebar-brand-text mx-3">{{ env('APP_SHORT_NAME') }}</div>
     </a>
     <hr class="sidebar-divider">
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('dashboard') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span class="wms-nav">Dashboard</span>
         </a>
     </li>
     @if(auth()->user()->role->value == 'WAREHOUSE_MANAGER')
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('warehouse.orders') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.orders') }}">
             <i class="fas fa-fw fa-box"></i>
-            <span>Orders</span>
+            <span class="wms-nav">Orders</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('warehouse.inventory') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.inventory') }}">
             <i class="fas fa-fw fa-warehouse"></i>
-            <span>Inventory Items</span>
+            <span class="wms-nav">Inventory Items</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('warehouse.trucks') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.trucks') }}">
             <i class="fas fa-fw fa-truck"></i>
-            <span>Trucks</span>
+            <span class="wms-nav">Trucks</span>
         </a>
     </li>
     @elseif(auth()->user()->role->value == 'CLIENT')
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('orders.index') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('orders.index') }}">
             <i class="fas fa-fw fa-box"></i>
-            <span>Orders</span>
+            <span class="wms-nav">Orders</span>
         </a>
     </li>
     @elseif(auth()->user()->role->value == 'SYSTEM_ADMIN')
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('warehouse.orders') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.orders') }}">
             <i class="fas fa-fw fa-box"></i>
-            <span>Orders</span>
+            <span class="wms-nav">Orders</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('warehouse.inventory') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.inventory') }}">
             <i class="fas fa-fw fa-warehouse"></i>
-            <span>Inventory Items</span>
+            <span class="wms-nav">Inventory Items</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('warehouse.trucks') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.trucks') }}">
             <i class="fas fa-fw fa-truck"></i>
-            <span>Trucks</span>
+            <span class="wms-nav">Trucks</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('users.index') }}">
             <i class="fas fa-fw fa-user"></i>
-            <span>Users</span>
+            <span class="wms-nav">Users</span>
         </a>
     </li>
     @endif

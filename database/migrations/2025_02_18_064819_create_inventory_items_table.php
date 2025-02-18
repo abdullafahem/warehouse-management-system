@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('item_name');
             $table->integer('quantity');
-            $table->decimal('unit_price', 10, 2);
-            $table->decimal('package_volume', 10, 2);
+            $table->integer('unit_price');
+            $table->bigInteger('package_volume');
             $table->timestamps();
         });
     }
