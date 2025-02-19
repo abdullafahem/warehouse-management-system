@@ -2,14 +2,12 @@
 
 namespace Tests\Unit;
 
-use App\Enums\Statuses;
 use App\Models\Delivery;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
 use PHPUnit\Framework\TestCase;
 use Illuminate\Support\Collection;
-use Mockery;
 
 class OrderTest extends TestCase
 {
