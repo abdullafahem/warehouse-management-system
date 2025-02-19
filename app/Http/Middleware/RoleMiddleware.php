@@ -15,6 +15,7 @@ class RoleMiddleware
      */
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
+        // Check if the user is authenticated and has the required role
         if (!$request->user() || !in_array($request->user()->role->value, $roles)) {
             abort(403, 'Unauthorized action.');
         }

@@ -89,7 +89,7 @@
                 </div>
             </div>
 
-            @if($order->status === 'AWAITING_APPROVAL')
+            @if($order->status->getLabel() === 'Awaiting Approval')
             <div class="card mb-4">
                 <div class="card-header">
                     <h4>Actions</h4>
@@ -109,7 +109,7 @@
             </div>
             @endif
 
-            @if($order->status === 'APPROVED' && !$order->delivery)
+            @if($order->status->getLabel() === 'Approved' && !$order->delivery)
             <div class="card mb-4">
                 <div class="card-header">
                     <h4>Schedule Delivery</h4>
@@ -188,7 +188,7 @@
     </div>
 </div>
 
-@if($order->status === 'APPROVED' && !$order->delivery)
+@if($order->status->getLabel() === 'Approved' && !$order->delivery)
 @push('scripts')
 <script>
 document.addEventListener('DOMContentLoaded', function() {

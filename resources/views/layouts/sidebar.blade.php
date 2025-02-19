@@ -13,51 +13,51 @@
         </a>
     </li>
     @if(auth()->user()->role->value == 'WAREHOUSE_MANAGER')
-    <li class="nav-item {{ request()->routeIs('warehouse.orders') ? 'active' : '' }}">
+    <li class="nav-item {{ request()->is('warehouse/orders*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.orders') }}">
             <i class="fas fa-fw fa-box"></i>
             <span class="wms-nav">Orders</span>
         </a>
     </li>
-    <li class="nav-item {{ request()->routeIs('warehouse.inventory') ? 'active' : '' }}">
+    <li class="nav-item {{ request()->is('warehouse/inventory*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.inventory') }}">
             <i class="fas fa-fw fa-warehouse"></i>
             <span class="wms-nav">Inventory Items</span>
         </a>
     </li>
-    <li class="nav-item {{ request()->routeIs('warehouse.trucks') ? 'active' : '' }}">
+    <li class="nav-item {{ request()->is('warehouse/trucks*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.trucks') }}">
             <i class="fas fa-fw fa-truck"></i>
             <span class="wms-nav">Trucks</span>
         </a>
     </li>
     @elseif(auth()->user()->role->value == 'CLIENT')
-    <li class="nav-item {{ request()->routeIs('orders.index') ? 'active' : '' }}">
+    <li class="nav-item {{ request()->is('orders/index*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('orders.index') }}">
             <i class="fas fa-fw fa-box"></i>
             <span class="wms-nav">Orders</span>
         </a>
     </li>
     @elseif(auth()->user()->role->value == 'SYSTEM_ADMIN')
-    <li class="nav-item {{ request()->routeIs('warehouse.orders') ? 'active' : '' }}">
+    <li class="nav-item {{ request()->is('warehouse/orders*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.orders') }}">
             <i class="fas fa-fw fa-box"></i>
             <span class="wms-nav">Orders</span>
         </a>
     </li>
-    <li class="nav-item {{ request()->routeIs('warehouse.inventory') ? 'active' : '' }}">
+    <li class="nav-item {{ request()->is('warehouse/inventory*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.inventory') }}">
             <i class="fas fa-fw fa-warehouse"></i>
             <span class="wms-nav">Inventory Items</span>
         </a>
     </li>
-    <li class="nav-item {{ request()->routeIs('warehouse.trucks') ? 'active' : '' }}">
+    <li class="nav-item {{ request()->is('warehouse/trucks*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('warehouse.trucks') }}">
             <i class="fas fa-fw fa-truck"></i>
             <span class="wms-nav">Trucks</span>
         </a>
     </li>
-    <li class="nav-item {{ request()->routeIs('users.index') ? 'active' : '' }}">
+    <li class="nav-item {{ request()->is('users/index*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('users.index') }}">
             <i class="fas fa-fw fa-user"></i>
             <span class="wms-nav">Users</span>

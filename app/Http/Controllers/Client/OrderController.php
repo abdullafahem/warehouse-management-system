@@ -36,7 +36,9 @@ class OrderController extends Controller
     // This method redirects to the create order page
     public function create()
     {
+        // Fetch all inventory items
         $inventoryItems = InventoryItem::all();
+
         return view('client.orders.create', [
             'inventoryItems' => $inventoryItems
         ]);
@@ -68,6 +70,7 @@ class OrderController extends Controller
             'items.*.quantity' => 'required|integer|min:1'
         ]);
 
+        // Create the order and its items in a transaction (all or nothing)
         DB::transaction(function () use ($request) {
             $order = Order::create([
                 'client_id' => Auth::id(),
@@ -100,6 +103,7 @@ class OrderController extends Controller
             'items.*.quantity' => 'required|integer|min:1'
         ]);
 
+        // Update the order and its items in a transaction (all or nothing)
         DB::transaction(function () use ($request, $order) {
             // Delete existing items
             $order->items()->delete();

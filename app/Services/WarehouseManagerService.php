@@ -21,7 +21,6 @@ class WarehouseManagerService
                 return $query->where('status', $status);
             })
             ->orderBy('submitted_date', 'desc');
-
         return $query->paginate(10);
     }
 
@@ -29,6 +28,7 @@ class WarehouseManagerService
     public function getOrderDetails(Order $order)
     {
         Log::info('Fetching order details', ['order_id' => $order->id]);
+        // Eager load relationships
         $order->load(['client', 'items.inventoryItem', 'delivery.trucks']);
         return $order;
     }
@@ -37,7 +37,7 @@ class WarehouseManagerService
     public function approveOrder(Order $order)
     {
         Log::info('Approving order', ['order_id' => $order->id]);
-        if ($order->status !== 'AWAITING_APPROVAL') {
+        if (!$order->status->getLabel() === 'Awaiting Approval') {
             Log::warning('Order cannot be approved in its current status', ['order_id' => $order->id, 'status' => $order->status]);
             return false;
         }
@@ -50,7 +50,7 @@ class WarehouseManagerService
     public function declineOrder(Order $order, $declineReason)
     {
         Log::info('Declining order', ['order_id' => $order->id, 'reason' => $declineReason]);
-        if ($order->status !== 'AWAITING_APPROVAL') {
+        if (!$order->status->getLabel() === 'Awaiting Approval') {
             Log::warning('Order cannot be declined in its current status', ['order_id' => $order->id, 'status' => $order->status]);
             return false;
         }
@@ -207,6 +207,7 @@ class WarehouseManagerService
             }
         }
 
+        // Create delivery and update order status in a transaction (all or nothing)
         DB::transaction(function () use ($order, $deliveryDate, $truckIds) {
             // Create delivery
             $delivery = Delivery::create([
