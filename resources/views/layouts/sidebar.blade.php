@@ -43,7 +43,7 @@
     @if(auth()->user()->role->value == 'SYSTEM_ADMIN')
     <li class="nav-item {{ request()->is('users/index*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('users.index') }}">
-            <i class="fas fa-fw fa-user"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span class="wms-nav">Users</span>
         </a>
     </li>
