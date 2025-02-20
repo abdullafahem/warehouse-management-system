@@ -3,7 +3,7 @@
         <div class="sidebar-brand-icon">
             <x-application-logo class="w-10 h-10 fill-current text-white" />
         </div>
-        <div class="sidebar-brand-text mx-3">{{ env('APP_SHORT_NAME') }}</div>
+        <div class="sidebar-brand-text mx-3">{{ config('app.short_name', 'WMS') }}</div>
     </a>
     <hr class="sidebar-divider">
     

@@ -123,4 +123,9 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    // Short name for the application
+    'short_name' => env('APP_SHORT_NAME', 'WMS'),
+
+    // Max days for delivery
+    'max_delivery_days' => env('WAREHOUSE_MAX_DELIVERY_DAYS', 30),
 ];

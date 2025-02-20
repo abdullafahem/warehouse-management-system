@@ -123,7 +123,7 @@ class WarehouseManagerService
     public function availableDates(): \DatePeriod
     {
         // Get system setting for max days (default 30)
-        $maxDays = (int) env('WAREHOUSE_MAX_DELIVERY_DAYS', 30);
+        $maxDays = config('app.max_delivery_days', 30);
 
         $today = Carbon::today();
         $endDate = (new \DateTime())->add(new \DateInterval("P{$maxDays}D"));
